@@ -23,16 +23,7 @@ public class CheckerboardGUI extends JFrame {
                 squares[row][col] = square;
                 boardPanel.add(square);
 
-                square.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        if (e.getButton() == MouseEvent.BUTTON1) {
-                            square.toggleChecker(Color.YELLOW);
-                        } else if (e.getButton() == MouseEvent.BUTTON3) {
-                            square.toggleChecker(Color.BLUE);
-                        }
-                    }
-                });
+                square.addMouseListener(new CheckerSquareMouse(square));
             }
         }
 
@@ -72,40 +63,6 @@ public class CheckerboardGUI extends JFrame {
         setVisible(true);
     }
 
-    private class CheckerSquare extends JPanel {
-        private Color checkerColor = null;
-        private int row, col;
-
-        CheckerSquare(int row, int col) {
-            this.row = row;
-            this.col = col;
-            setPreferredSize(new Dimension(50, 50));
-        }
-
-        public void toggleChecker(Color color) {
-            if (checkerColor == null) {
-                checkerColor = color;
-            } else {
-                checkerColor = null;
-            }
-            repaint(); // Repaint the square to show or hide the checker
-        }
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-
-            // Draw the square
-            g.setColor((row + col) % 2 == 0 ? Color.WHITE : Color.BLACK);
-            g.fillRect(0, 0, getWidth(), getHeight());
-
-            // Draw the checker if it exists
-            if (checkerColor != null) {
-                g.setColor(checkerColor);
-                g.fillOval(5, 5, getWidth() - 10, getHeight() - 10);
-            }
-        }
-    }
 
     private void startGame() {
         for (int row = 0; row < BOARD_SIZE; row++) {
@@ -135,9 +92,5 @@ public class CheckerboardGUI extends JFrame {
         JOptionPane.showMessageDialog(this, message, "How to Add/Remove Checkers", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new CheckerboardGUI();
-        });
-    }
+
 }
