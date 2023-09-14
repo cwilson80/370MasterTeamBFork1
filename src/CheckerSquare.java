@@ -34,4 +34,8 @@ public class CheckerSquare extends JPanel {
             g.fillOval(5, 5, getWidth() - 10, getHeight() - 10);
         }
     }
+
+    public Color getCheckerColor() {
+        return checkerColor;
+    }
 }
