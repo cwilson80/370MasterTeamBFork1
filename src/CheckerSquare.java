@@ -28,6 +28,7 @@ public class CheckerSquare extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        // TODO Implement highlighting the piece or square when selected
         // Draw the square
         g.setColor((row + col) % 2 == 0 ? Color.WHITE : Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
