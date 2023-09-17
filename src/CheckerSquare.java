@@ -2,12 +2,16 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CheckerSquare extends JPanel {
+    public static final Color TEAM1 = Color.YELLOW;
+    public static final Color TEAM2 = Color.BLUE;
     private Color checkerColor = null;
+    private boolean isKing;
     private int row, col;
 
     CheckerSquare(int row, int col) {
         this.row = row;
         this.col = col;
+        isKing = false;
         setPreferredSize(new Dimension(50, 50));
     }
 
@@ -32,10 +36,17 @@ public class CheckerSquare extends JPanel {
         if (checkerColor != null) {
             g.setColor(checkerColor);
             g.fillOval(5, 5, getWidth() - 10, getHeight() - 10);
+            if(isKing) {
+                // TODO Implement graphics for a piece that is a king
+            }
         }
     }
 
     public Color getCheckerColor() {
         return checkerColor;
+    }
+
+    public void setIsKing(boolean isKing) {
+        this.isKing = isKing;
     }
 }

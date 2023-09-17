@@ -66,9 +66,9 @@ public class CheckerboardGUI extends JFrame {
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int col = 0; col < BOARD_SIZE; col++) {
                 if (row < 3 && (row + col) % 2 == 1) {
-                    squares[row][col].toggleChecker(Color.YELLOW);
+                    squares[row][col].toggleChecker(CheckerSquare.TEAM1);
                 } else if (row > 4 && (row + col) % 2 == 1) {
-                    squares[row][col].toggleChecker(Color.BLUE);
+                    squares[row][col].toggleChecker(CheckerSquare.TEAM2);
                 }
             }
         }
@@ -83,11 +83,10 @@ public class CheckerboardGUI extends JFrame {
     }
 
     private void showHelpDialog() {
-        String message = "Left-click a square to add a yellow checker.\n"
-                + "Right-click a square to add a blue checker.\n"
-                + "Click again to remove a checker.\n"
-                + "Use the 'Start Game' button to set up the board for a game.";
-        JOptionPane.showMessageDialog(this, message, "How to Add/Remove Checkers", JOptionPane.INFORMATION_MESSAGE);
+        String message = "Click the checker you want to move.\n" +
+                "Click the empty space you want to move the checker to.\n" +
+                "You can click the checker again to deselect it, or click another checker.";
+        JOptionPane.showMessageDialog(this, message, "How to Move Checkers", JOptionPane.INFORMATION_MESSAGE);
     }
 
 
